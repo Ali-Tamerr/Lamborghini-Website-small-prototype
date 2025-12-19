@@ -1,6 +1,6 @@
 import React from 'react';
 import revueltoLogo from './imgs/Lamborghini-revuelto-logo.png';
-import revueltoVideo from './imgs/Lamborghini reveulto preview.mp4';
+import revueltoVideo from './imgs/Lamborghini revuelto preview.mp4';
 import { useNavigate } from "react-router-dom";
 
 const Section1 = ({ startLoading, translate }) => {

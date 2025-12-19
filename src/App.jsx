@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import imageImports from './components/imageImports';
-import translations from './components/Translations';
-import SearchSection from './components/SearchSection';
+import imageImports from './components/imageImports.jsx';
+import translations from './components/Translations.jsx';
+import SearchSection from './components/SearchSection.jsx';
 import './components/App.css';
-import Header from './components/Header';
-import Section1 from './components/Section1';
-import Section2 from './components/Section2';
-import Section3 from './components/Section3';
-import Section4 from './components/Section4';
-import Section5 from './components/Section5';
-import Footer from './components/Footer';
+import Header from './components/Header.jsx';
+import Section1 from './components/Section1.jsx';
+import Section2 from './components/Section2.jsx';
+import Section3 from './components/Section3.jsx';
+import Section4 from './components/Section4.jsx';
+import Section5 from './components/Section5.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   const location = useLocation();
