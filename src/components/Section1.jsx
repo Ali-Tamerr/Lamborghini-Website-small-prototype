@@ -14,7 +14,7 @@ const Section1 = ({ startLoading, translate }) => {
   return (
     <div id="section-1">
       <div id="section-1-video">
-        <video autoPlay loop muted>
+        <video autoPlay loop muted preload="auto">
           <source src={revueltoVideo} type="video/mp4"/>
         </video>
         <div id="video-black-shade"></div>
