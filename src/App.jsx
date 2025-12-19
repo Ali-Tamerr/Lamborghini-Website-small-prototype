@@ -4,6 +4,7 @@ import imageImports from './components/imageImports.jsx';
 import translations from './components/Translations.jsx';
 import SearchSection from './components/SearchSection.jsx';
 import './components/App.css';
+import LoadingScreen from './components/LoadingScreen.jsx';
 import Header from './components/Header.jsx';
 import Section1 from './components/Section1.jsx';
 import Section2 from './components/Section2.jsx';
@@ -15,8 +16,36 @@ import Footer from './components/Footer.jsx';
 function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [language, setLanguage] = useState('en');
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+
+  useEffect(() => {
+    // Wait for video to load
+    const video = document.querySelector('video');
+    if (video) {
+      const handleVideoLoad = () => {
+        setTimeout(() => {
+          setInitialLoading(false);
+        }, 500);
+      };
+
+      if (video.readyState >= 3) {
+        handleVideoLoad();
+      } else {
+        video.addEventListener('canplaythrough', handleVideoLoad);
+        // Fallback timeout in case video doesn't load
+        setTimeout(() => {
+          setInitialLoading(false);
+        }, 3000);
+      }
+    } else {
+      // If no video found, hide loading after a short delay
+      setTimeout(() => {
+        setInitialLoading(false);
+      }, 1500);
+    }
+  }, []);
 
   const startLoading = () => {
     setLoading(true);
@@ -110,6 +139,7 @@ function App() {
 
   return (
     <div className="App" data-lang={language}>
+      <LoadingScreen isLoading={initialLoading} />
       <SearchSection startLoading={startLoading} isVisible={isSearchVisible} toggleVisibility={toggleSearchVisibility} />
       <Header loading={loading} toggleLanguage={toggleLanguage} translate={translate} startLoading={startLoading} toggleSearchVisibility={toggleSearchVisibility} />
       <Routes>
